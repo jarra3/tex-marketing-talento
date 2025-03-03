@@ -13,6 +13,7 @@
             padding: 0;
             background: url('https://source.unsplash.com/1600x900/?digital,futuristic,3d') no-repeat center center/cover;
             color: #ffffff;
+            overflow: hidden;
             position: relative;
         }
         .container {
