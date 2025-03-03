@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Marketing</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://source.unsplash.com/1600x900/?digital,futuristic,3d') no-repeat center center/cover;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            color: #00ffff;
+            font-size: 26px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+            color: #00ffff;
+            font-size: 18px;
+        }
+        textarea {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 10px;
+            border: 2px solid #00ffff;
+            border-radius: 5px;
+            padding: 5px;
+            background: #252525;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #00ffff;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        button:hover {
+            background: #00cccc;
+            box-shadow: 0 0 15px #00cccc;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #00ff00;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://source.unsplash.com/600x200/?technology,futuristic" alt="Marketing Tech" class="header-img">
+        <h2>Test de Marketing</h2>
+        <form id="testForm">
+            <label>1. ¿Qué es el marketing digital y en qué se diferencia del marketing tradicional?</label>
+            <textarea name="respuesta1" required></textarea>
+
+            <label>2. Explica brevemente el concepto de embudo de ventas.</label>
+            <textarea name="respuesta2" required></textarea>
+
+            <label>3. ¿Cuáles son las 4P del marketing?</label>
+            <textarea name="respuesta3" required></textarea>
+
+            <label>4. ¿Qué es el Buyer Persona?</label>
+            <textarea name="respuesta4" required></textarea>
+
+            <label>5. Menciona tres herramientas de análisis de métricas.</label>
+            <textarea name="respuesta5" required></textarea>
+
+            <button type="submit">Enviar Respuestas</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        document.getElementById("testForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let respuestasCorrectas = {
+                respuesta1: "El marketing digital se basa en canales digitales como redes sociales, SEO y publicidad en línea, mientras que el marketing tradicional usa medios físicos como televisión, radio y prensa.",
+                respuesta2: "El embudo de ventas representa el proceso que sigue un cliente desde que conoce un producto hasta que realiza una compra.",
+                respuesta3: "Las 4P del marketing son Producto, Precio, Plaza y Promoción.",
+                respuesta4: "El Buyer Persona es una representación semi-ficticia del cliente ideal basada en datos reales y estudios de mercado.",
+                respuesta5: "Tres herramientas de análisis de métricas son Google Analytics, SEMrush y HubSpot."
+            };
+            
+            let respuestasUsuario = {
+                respuesta1: document.querySelector('[name="respuesta1"]').value.trim().toLowerCase(),
+                respuesta2: document.querySelector('[name="respuesta2"]').value.trim().toLowerCase(),
+                respuesta3: document.querySelector('[name="respuesta3"]').value.trim().toLowerCase(),
+                respuesta4: document.querySelector('[name="respuesta4"]').value.trim().toLowerCase(),
+                respuesta5: document.querySelector('[name="respuesta5"]').value.trim().toLowerCase()
+            };
+            
+            let puntuacion = 0;
+            let totalPreguntas = Object.keys(respuestasCorrectas).length;
+            
+            Object.keys(respuestasCorrectas).forEach((key) => {
+                if (respuestasUsuario[key].includes(respuestasCorrectas[key].toLowerCase().split(" ")[0])) {
+                    puntuacion++;
+                }
+            });
+            
+            let resultadoTexto = `Tu puntuación es ${puntuacion} de ${totalPreguntas}.`;
+            document.getElementById("result").textContent = resultadoTexto;
+        });
+    </script>
+</body>
+</html>
