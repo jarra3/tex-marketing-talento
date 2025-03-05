@@ -11,7 +11,7 @@
             font-family: 'Orbitron', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://source.unsplash.com/1600x900/?digital,futuristic,3d') no-repeat center center/cover;
+            background: url('./assets/background.jpg') no-repeat center center/cover;
             color: #ffffff;
             overflow: hidden;
             position: relative;
@@ -82,7 +82,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://source.unsplash.com/600x200/?technology,futuristic" alt="Marketing Tech" class="header-img">
+        <img src="./assets/header.jpg" alt="Marketing Tech" class="header-img">
         <h2>Test de Marketing</h2>
         <form id="testForm">
             <label>1. ¿Qué es el marketing digital y en qué se diferencia del marketing tradicional?</label>
@@ -109,11 +109,11 @@
             event.preventDefault();
             
             let respuestasCorrectas = {
-                respuesta1: "El marketing digital se basa en canales digitales como redes sociales, SEO y publicidad en línea, mientras que el marketing tradicional usa medios físicos como televisión, radio y prensa.",
-                respuesta2: "El embudo de ventas representa el proceso que sigue un cliente desde que conoce un producto hasta que realiza una compra.",
-                respuesta3: "Las 4P del marketing son Producto, Precio, Plaza y Promoción.",
-                respuesta4: "El Buyer Persona es una representación semi-ficticia del cliente ideal basada en datos reales y estudios de mercado.",
-                respuesta5: "Tres herramientas de análisis de métricas son Google Analytics, SEMrush y HubSpot."
+                respuesta1: "marketing digital",
+                respuesta2: "embudo de ventas",
+                respuesta3: "4P",
+                respuesta4: "buyer persona",
+                respuesta5: "google analytics"
             };
             
             let respuestasUsuario = {
@@ -128,7 +128,7 @@
             let totalPreguntas = Object.keys(respuestasCorrectas).length;
             
             Object.keys(respuestasCorrectas).forEach((key) => {
-                if (respuestasUsuario[key].includes(respuestasCorrectas[key].toLowerCase().split(" ")[0])) {
+                if (respuestasUsuario[key].includes(respuestasCorrectas[key])) {
                     puntuacion++;
                 }
             });
